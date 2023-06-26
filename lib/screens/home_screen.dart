@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/material.dart';
 import 'package:musicplyer/color.dart';
 import 'package:musicplyer/screens/modal/albumlist.dart';
@@ -9,129 +12,199 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Mycolor.scafoldBg,
-        toolbarHeight: 135,
-        flexibleSpace: MediaQuery.removePadding(
+        appBar: AppBar(
+          backgroundColor: Mycolor.scafoldBg,
+          toolbarHeight: 135,
+          flexibleSpace: MediaQuery.removePadding(
+              context: context,
+              removeBottom: true,
+              child: SafeArea(child: _appbar())),
+          elevation: 0,
+          automaticallyImplyLeading: false,
+        ),
+        body: SingleChildScrollView(
+          child: MediaQuery.removePadding(
             context: context,
-            removeBottom: true,
-            child: SafeArea(child: _appbar())),
-        elevation: 0,
-        automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        child: MediaQuery.removePadding(
-          context: context,
-          removeTop: true,
-          child: SafeArea(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //appbar
+            removeTop: true,
+            child: SafeArea(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //appbar
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _itemscroll(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Text(
-                      "Popular Playlist",
-                      style: TextStyle(
-                          color: Mycolor.headerTextColor,
-                          fontFamily: 'Jakarta',
-                          fontWeight: FontWeight.w800,
-                          fontSize: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _itemscroll(),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    height: 410,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: GridView.builder(
-                          scrollDirection: Axis.vertical,
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: 200,
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 20),
-                          itemCount: hslist.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                albumlist[index].imgAl))),
-                                    foregroundDecoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        gradient: LinearGradient(
-                                          end: Alignment(0, -1),
-                                          begin: Alignment.bottomCenter,
-                                          colors: [
-                                            Color.fromARGB(255, 0, 0, 0),
-                                            Color.fromARGB(179, 0, 0, 0),
-                                            Color.fromARGB(28, 0, 0, 0),
-                                          ],
-                                        )),
-                                  ),
-                                  Positioned(
-                                    bottom: 10,
-                                    left: 0,
-                                    right: 0,
-                                    child: Column(
-                                      children: [
-                                        Text(albumlist[index].nameAl + " Album",
-                                            style: TextStyle(
-                                                color: Mycolor.headerTextColor,
-                                                fontFamily: 'Jakarta',
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 15)),
-                                        Text(
-                                            albumlist[index].numberli + " View",
-                                            style: TextStyle(
-                                                color: Mycolor.headerTextColor,
-                                                fontFamily: 'Jakarta',
-                                                fontWeight: FontWeight.w300,
-                                                fontSize: 12))
-                                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Text(
+                        "Popular Playlist",
+                        style: TextStyle(
+                            color: Mycolor.headerTextColor,
+                            fontFamily: 'Jakarta',
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 410,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: GridView.builder(
+                            scrollDirection: Axis.vertical,
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 200,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20),
+                            itemCount: hslist.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: AssetImage(
+                                                  albumlist[index].imgAl))),
+                                      foregroundDecoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          gradient: LinearGradient(
+                                            end: Alignment(0, -1),
+                                            begin: Alignment.bottomCenter,
+                                            colors: [
+                                              Color.fromARGB(255, 0, 0, 0),
+                                              Color.fromARGB(179, 0, 0, 0),
+                                              Color.fromARGB(28, 0, 0, 0),
+                                            ],
+                                          )),
                                     ),
-                                  )
-                                ],
-                              ),
-                            );
-                          }),
+                                    Positioned(
+                                      bottom: 10,
+                                      left: 0,
+                                      right: 0,
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                              albumlist[index].nameAl +
+                                                  " Album",
+                                              style: TextStyle(
+                                                  color:
+                                                      Mycolor.headerTextColor,
+                                                  fontFamily: 'Jakarta',
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15)),
+                                          Text(
+                                              albumlist[index].numberli +
+                                                  " View",
+                                              style: TextStyle(
+                                                  color:
+                                                      Mycolor.headerTextColor,
+                                                  fontFamily: 'Jakarta',
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 12))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            }),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            )),
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+          child: Container(
+            height: 160,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                color: Mycolor.bottomnav),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                  "assets/images/Selena-Gomez-2.jpg"))),
                     ),
-                  )
-                ],
-              )
-            ],
-          )),
-        ),
-      ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
-        child: Container(
-          height: 160,
-          decoration: BoxDecoration(
-              color: Mycolor.bottomnav,
-              borderRadius: BorderRadius.circular(24)),
-        ),
-      ),
-    );
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 80, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "mwake wake",
+                            style: TextStyle(
+                                fontFamily: 'Jakarta',
+                                color: Mycolor.headerTextColor,
+                                fontSize: 15),
+                          ),
+                          Text(
+                            "data",
+                            style: TextStyle(
+                                fontFamily: 'Jakarta',
+                                color: Mycolor.bodyTextColor,
+                                fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color: Mycolor.primary.withOpacity(0.3)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.headphones,
+                                color: Mycolor.primary,
+                                size: 15,
+                              ),
+                              Text(
+                                "HeadPhone",
+                                style: TextStyle(
+                                    fontFamily: 'Jakarta',
+                                    color: Mycolor.primary,
+                                    fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ))
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 
   Column _itemscroll() {

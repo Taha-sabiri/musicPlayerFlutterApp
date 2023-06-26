@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicplyer/screens/splash_screen.dart';
 import 'package:musicplyer/color.dart';
+import 'package:audio_waveforms/audio_waveforms.dart';
 
 void main() {
   runApp(const MyApp());
