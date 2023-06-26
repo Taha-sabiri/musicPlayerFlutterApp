@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:musicplyer/screens/home_screen.dart';
+import 'package:musicplyer/screens/oneboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,9 +12,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 5)).then((value) => {
+    Future.delayed(const Duration(seconds: 5)).then((value) => {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeScreen()))
+              .push(MaterialPageRoute(builder: (context) => const Onboarding()))
         });
     super.initState();
   }
@@ -28,13 +28,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image(
-            image: AssetImage('assets/images/WonPlayer.png'),
+            image: const AssetImage('assets/images/WonPlayer.png'),
             width: size.width / 1.9,
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          SpinKitWave(
+          const SpinKitWave(
             color: Colors.purple,
             size: 20.0,
           )
