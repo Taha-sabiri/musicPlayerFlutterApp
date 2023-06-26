@@ -6,4 +6,5 @@ class Mycolor {
   static const Color headerTextColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color bodyTextColor = Color.fromRGBO(255, 255, 255, 0.24);
   static const Color searchColor = Color.fromRGBO(255, 255, 255, 0.08);
+  static const Color bottomnav = Color.fromRGBO(28, 22, 28, 1);
 }

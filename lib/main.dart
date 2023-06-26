@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+          bottomNavigationBarTheme:
+              BottomNavigationBarTheme.of(context).copyWith(
+            backgroundColor: Colors.transparent,
+          ),
           scaffoldBackgroundColor: Mycolor.scafoldBg,
           primaryColor: Mycolor.primary),
       home: const SplashScreen(),
