@@ -29,14 +29,14 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image(
-            image: const AssetImage('assets/images/WonPlayer.png'),
+            image: const AssetImage('assets/images/WonPlayer wh.png'),
             width: size.width / 1.9,
           ),
           const SizedBox(
             height: 5,
           ),
           const SpinKitWave(
-            color: Mycolor.primary,
+            color: Mycolor.headerTextColor,
             size: 20.0,
           )
         ]),
