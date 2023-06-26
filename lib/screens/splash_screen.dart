@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:musicplyer/color.dart';
 import 'package:musicplyer/screens/oneboarding.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 5,
           ),
           const SpinKitWave(
-            color: Colors.purple,
+            color: Mycolor.primary,
             size: 20.0,
           )
         ]),

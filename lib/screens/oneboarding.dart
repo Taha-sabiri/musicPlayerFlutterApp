@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicplyer/color.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({super.key});
@@ -16,7 +17,7 @@ class Onboarding extends StatelessWidget {
               'assets/images/WonPlayer.png',
               width: size.width / 3.82,
             ),
-            SizedBox(
+            const SizedBox(
               height: 45,
             ),
             Row(
@@ -27,10 +28,10 @@ class Onboarding extends StatelessWidget {
                   height: size.width / 2.37,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/image 1737.png'))),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Container(
@@ -38,12 +39,12 @@ class Onboarding extends StatelessWidget {
                   height: size.width / 2.37,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/image 1737.png'))),
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -54,10 +55,10 @@ class Onboarding extends StatelessWidget {
                   height: size.width / 2.37,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/image 1737.png'))),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Container(
@@ -65,13 +66,13 @@ class Onboarding extends StatelessWidget {
                   height: size.width / 2.37,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/image 1737.png'))),
                 )
               ],
             ),
 
-            SizedBox(
+            const SizedBox(
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text("Life Is A Pretty Song,\nLove Is The Music.",
@@ -80,7 +81,7 @@ class Onboarding extends StatelessWidget {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 360,
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -90,6 +91,14 @@ class Onboarding extends StatelessWidget {
                     style: TextStyle(color: Colors.white)),
               ),
             ),
+            FilledButton(
+              onPressed: () {},
+              style: FilledButton.styleFrom(backgroundColor: Mycolor.primary),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text("Start Listening"), Icon(Icons.arrow_forward)],
+              ),
+            )
           ]),
         ),
       ),
