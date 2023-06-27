@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:musicplyer/color.dart';
 import 'package:musicplyer/screens/modal/albumlist.dart';
 import 'package:musicplyer/screens/modal/itemlist.dart';
+import 'package:musicplyer/screens/popular_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -67,58 +68,78 @@ class HomeScreen extends StatelessWidget {
                                     mainAxisSpacing: 20),
                             itemCount: hslist.length,
                             itemBuilder: (context, index) {
-                              return Container(
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                  albumlist[index].imgAl))),
-                                      foregroundDecoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          gradient: LinearGradient(
-                                            end: Alignment(0, -1),
-                                            begin: Alignment.bottomCenter,
-                                            colors: [
-                                              Color.fromARGB(255, 0, 0, 0),
-                                              Color.fromARGB(179, 0, 0, 0),
-                                              Color.fromARGB(28, 0, 0, 0),
-                                            ],
-                                          )),
-                                    ),
-                                    Positioned(
-                                      bottom: 10,
-                                      left: 0,
-                                      right: 0,
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                              albumlist[index].nameAl +
-                                                  " Album",
-                                              style: TextStyle(
-                                                  color:
-                                                      Mycolor.headerTextColor,
-                                                  fontFamily: 'Jakarta',
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 15)),
-                                          Text(
-                                              albumlist[index].numberli +
-                                                  " View",
-                                              style: TextStyle(
-                                                  color:
-                                                      Mycolor.headerTextColor,
-                                                  fontFamily: 'Jakarta',
-                                                  fontWeight: FontWeight.w300,
-                                                  fontSize: 12))
-                                        ],
+                              return InkWell(
+                                onTap: () => (Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            popularScreen(state: index)))),
+                                child: Container(
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: AssetImage(
+                                                    albumlist[index].imgAl))),
+                                        foregroundDecoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            gradient: LinearGradient(
+                                              end: Alignment(0, -1),
+                                              begin: Alignment.bottomCenter,
+                                              colors: [
+                                                Color.fromARGB(255, 0, 0, 0),
+                                                Color.fromARGB(179, 0, 0, 0),
+                                                Color.fromARGB(28, 0, 0, 0),
+                                              ],
+                                            )),
                                       ),
-                                    )
-                                  ],
+                                      Positioned(
+                                        bottom: 10,
+                                        left: 0,
+                                        right: 0,
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                                albumlist[index].nameAl +
+                                                    " Album",
+                                                style: TextStyle(
+                                                    color:
+                                                        Mycolor.headerTextColor,
+                                                    fontFamily: 'Jakarta',
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 15)),
+                                            Text(
+                                                albumlist[index].numberli +
+                                                    " View",
+                                                style: TextStyle(
+                                                    color:
+                                                        Mycolor.headerTextColor,
+                                                    fontFamily: 'Jakarta',
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 12))
+                                          ],
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              color: Colors.white38),
+                                          child: IconButton.filled(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.play_arrow,
+                                                color: Colors.white,
+                                              )),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             }),
