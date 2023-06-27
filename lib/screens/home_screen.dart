@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:musicplyer/color.dart';
 import 'package:musicplyer/screens/modal/albumlist.dart';
@@ -132,7 +133,7 @@ class HomeScreen extends StatelessWidget {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
           child: Container(
-            height: 160,
+            height: 190,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
                 color: Mycolor.bottomnav),
@@ -201,6 +202,52 @@ class HomeScreen extends StatelessWidget {
                         ))
                   ],
                 ),
+
+                //add bar
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ProgressBar(
+                    progress: Duration(seconds: 100),
+                    thumbColor: Mycolor.primary,
+                    progressBarColor: Mycolor.primary,
+                    total: Duration(seconds: 132),
+                    baseBarColor: Mycolor.primary.withOpacity(.5),
+                    timeLabelTextStyle:
+                        TextStyle(color: Mycolor.headerTextColor),
+                    onSeek: (duration) {
+                      print('User selected a new time: $duration');
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.skip_previous,
+                          color: Colors.white,
+                        )),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Mycolor.primary,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: IconButton.filled(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.play_arrow,
+                            color: Colors.white,
+                          )),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.skip_next,
+                          color: Colors.white,
+                        )),
+                  ],
+                )
               ],
             ),
           ),
