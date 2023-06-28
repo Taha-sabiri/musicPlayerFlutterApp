@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:musicplyer/color.dart';
 import 'package:musicplyer/screens/modal/albumlist.dart';
 import 'package:musicplyer/screens/modal/musiclist.dart';
+import 'package:musicplyer/screens/player_screen.dart';
 
 class popularScreen extends StatelessWidget {
   final int state;
@@ -162,69 +163,76 @@ class popularScreen extends StatelessWidget {
                   itemCount: musiclist.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Container(
-                          height: 90,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 65,
-                                width: 65,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            musiclist[index].cover))),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 150, 0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      musiclist[index].namemusic,
-                                      style: TextStyle(
-                                          fontFamily: 'Jakarta',
-                                          color: Mycolor.headerTextColor,
-                                          fontSize: 15),
-                                    ),
-                                    Text(
-                                      musiclist[index].singer,
-                                      style: TextStyle(
-                                          fontFamily: 'Jakarta',
-                                          color: Mycolor.bodyTextColor,
-                                          fontSize: 15),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.play_arrow,
-                                          color: Colors.white70,
-                                          size: 20,
-                                        ),
-                                        Text(
-                                          "563k - 2:31",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PlayerScr(index: index)));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Container(
+                            height: 90,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  height: 65,
+                                  width: 65,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              musiclist[index].cover))),
                                 ),
-                              ),
-                              Icon(
-                                Icons.more_horiz,
-                                color: Colors.white,
-                              )
-                            ],
-                          ),
-                          decoration: BoxDecoration()),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 150, 0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        musiclist[index].namemusic,
+                                        style: TextStyle(
+                                            fontFamily: 'Jakarta',
+                                            color: Mycolor.headerTextColor,
+                                            fontSize: 15),
+                                      ),
+                                      Text(
+                                        musiclist[index].singer,
+                                        style: TextStyle(
+                                            fontFamily: 'Jakarta',
+                                            color: Mycolor.bodyTextColor,
+                                            fontSize: 15),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.play_arrow,
+                                            color: Colors.white70,
+                                            size: 20,
+                                          ),
+                                          Text(
+                                            "563k - 2:31",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.more_horiz,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
+                            decoration: BoxDecoration()),
+                      ),
                     );
                   }),
             ),
