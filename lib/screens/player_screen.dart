@@ -2,6 +2,7 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:musicplyer/color.dart';
+import 'package:musicplyer/screens/modal/musiclist.dart';
 
 class PlayerScr extends StatelessWidget {
   final int index;
@@ -24,9 +25,14 @@ class PlayerScr extends StatelessWidget {
                   border: Border.all(color: Mycolor.bodyTextColor)),
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: Icon(
-                  CupertinoIcons.arrow_left,
-                  color: Colors.white,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    CupertinoIcons.arrow_left,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -67,42 +73,44 @@ class PlayerScr extends StatelessWidget {
                         ColorFilter.mode(Colors.black, BlendMode.color),
                     fit: BoxFit.cover,
                     image: AssetImage(
-                        'assets/images/Drake-Chunky-Knit-Sweater-Hotline-Bling.gif'))),
+                      musiclist[index].gif,
+                    ))),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 30,
+                height: 70,
               ),
               Container(
-                width: 300,
-                height: 300,
+                width: 250,
+                height: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/poori_kolohom.jpg'))),
+                        image: AssetImage(musiclist[index].cover))),
               ),
               SizedBox(
                 height: 20,
               ),
               Text(
-                "GodPoori",
+                musiclist[index].singer,
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Colors.white,
                     fontFamily: 'Jakarta',
-                    fontSize: 25),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800),
               ),
               Text(
-                "Koloohm",
+                musiclist[index].namemusic,
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Colors.white60,
                     fontFamily: 'Jakarta',
-                    fontSize: 20,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(

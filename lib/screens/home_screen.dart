@@ -9,18 +9,191 @@ import 'package:musicplyer/screens/modal/itemlist.dart';
 import 'package:musicplyer/screens/popular_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _globalKey,
+        drawer: Drawer(
+            backgroundColor: Mycolor.scafoldBg,
+            child: ListView(
+              children: [
+                DrawerHeader(
+                    child: Center(
+                  child: Container(
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/images/WonPlayer wh.png')),
+                )),
+                ListTile(
+                  title: Text(
+                    "Setting",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Jakarta',
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.grey.shade800,
+                ),
+                ListTile(
+                  title: Text(
+                    "Profile",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Jakarta',
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.grey.shade800,
+                ),
+                ListTile(
+                  title: Text(
+                    "Search",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Jakarta',
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.grey.shade800,
+                ),
+                ListTile(
+                  title: Text(
+                    "Contact Us",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Jakarta',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 200,
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(
+                          Icons.facebook,
+                          color: Colors.white,
+                        ),
+                        Icon(
+                          Icons.call,
+                          color: Colors.white,
+                        ),
+                        Icon(
+                          Icons.telegram,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            )),
         appBar: AppBar(
           backgroundColor: Mycolor.scafoldBg,
           toolbarHeight: 135,
           flexibleSpace: MediaQuery.removePadding(
               context: context,
               removeBottom: true,
-              child: SafeArea(child: _appbar())),
+              child: SafeArea(
+                  child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          _globalKey.currentState!.openDrawer();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Mycolor.bodyTextColor)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Icon(
+                              Icons.menu,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Welcome Dear,",
+                                style: TextStyle(
+                                    color: Mycolor.bodyTextColor,
+                                    fontFamily: 'Jakarta',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 14)),
+                            Text("Enjoy listening music here.",
+                                style: TextStyle(
+                                    color: Mycolor.headerTextColor,
+                                    fontFamily: 'Jakarta',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 14))
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Mycolor.bodyTextColor)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Icon(
+                              Icons.settings,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide(color: Colors.transparent),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        fillColor: Mycolor.searchColor,
+                        filled: true,
+                        prefixIcon: Icon(Icons.search),
+                        suffixIcon: Icon(Icons.mic_none_outlined),
+                        suffix: Text("|"),
+                        hintText: 'Search among all Singers, Albums ,...',
+                        hintStyle: TextStyle(
+                            color: Mycolor.bodyTextColor,
+                            fontFamily: 'Jakarta',
+                            fontSize: 12),
+                      ),
+                    ),
+                  )
+                ],
+              ))),
           elevation: 0,
           automaticallyImplyLeading: false,
         ),
@@ -342,12 +515,15 @@ class HomeScreen extends StatelessWidget {
 
   Column _appbar() {
     return Column(
+      key: _globalKey,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                _globalKey.currentState!.openDrawer();
+              },
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),

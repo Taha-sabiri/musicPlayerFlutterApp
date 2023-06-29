@@ -125,7 +125,7 @@ class Onboarding extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => HomeScreen(),
                       ));
                 },
                 style: FilledButton.styleFrom(backgroundColor: Mycolor.primary),
